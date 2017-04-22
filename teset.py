@@ -22,9 +22,9 @@ Created on Fri Apr 21 09:58:01 2017
 #import os, sys
 #import threading
 #import time
-import XboxController
+import XboxController2
 
-XboxCont = XboxController.XboxController(
+XboxCont = XboxController2.XboxController(
     controllerCallBack = None,
     joystickNo = 0,
     deadzone = 15,
@@ -39,10 +39,10 @@ XboxCont.start()
 while Operational:
     
     try:
-        print "RTrigger {}, LTrigger {}".format(round(XboxCont.RTRIGGER), round(XboxCont.LTRIGGER))
+       # print "RTrigger {}, LTrigger {}".format(round(XboxCont.RTRIGGER), round(XboxCont.LTRIGGER))
        # print "LThumb x {}, LThumb y {}".format(round(XboxCont.LTHUMBX), round(XboxCont.LTHUMBY))
        # print "RThumb x {}, RThumb y {}".format(round(XboxCont.RTHUMBX), round(XboxCont.RTHUMBY))
-       # print " "
+        print "A {}, B {}, X {}, Y{}".format(round(XboxCont.A), round(XboxCont.B), round(XboxCont.X), round(XboxCont.Y))
        # print " "
        # print " "
        
