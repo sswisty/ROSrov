@@ -63,12 +63,12 @@ class ROVcomms():
     def PressureCallback(self, PTmsg):
         # Read pressure, tempature from topic 
         self.PTreadings = PTmsg
-        #rospy.loginfo(self.PTreadings)
+        rospy.loginfo(self.PTreadings)
         
     def IMUcallback(self, IMUmsg):
         # Read IMU from topic
         self.IMUreadings = IMUmsg
-        #rospy.loginfo(self.IMUreadings)
+        rospy.loginfo(self.IMUreadings)
         
     def shutdown(self):
         """ publish an empty twist message to stop the turtlebot"""
@@ -84,32 +84,23 @@ class ROVcomms():
         
         # Message types
         self.twist_msg = Twist()
-        self.PTreadings = String()
         
         # Loop Rate
         r = rospy.Rate(50)
         
         # SUBSCRIBERS AND PUBLISHERS
         # Publish drive commands for the ROV
-        self.cmd_vel = rospy.Publisher("DriveCommands", Twist,queue_size=100)
+        self.cmd_vel = rospy.Publisher("DriveCommads", Twist,queue_size=100)
         
         # Subscrive to sensor measurements
         self.PressTemp_sub = rospy.Subscriber("PT_data", String, self.PressureCallback)
-        self.IMU_sub = rospy.Subscriber("IMU_data", Twist, self.IMUcallback)
+        self.IMU_sub = rospy.Subscriber("IMU_data", String, self.IMUcallback)
         #self.test = rospy.Subscriber()
         
         while not rospy.is_shutdown():
             
             # Update control values, send to ROV            
             self.UpdateControls()
-            
-            if XboxCont.A == 1:
-                print self.PTreadings
-<<<<<<< HEAD
-               # print 'A is pressed'
-=======
-                print 'A is pressed'
->>>>>>> 6cef6acaea2b2a34d477787c2363fa4041fb1709
 
             r.sleep()
         return

@@ -95,7 +95,7 @@ class ROVcomms():
         
         # Subscrive to sensor measurements
         self.PressTemp_sub = rospy.Subscriber("PT_data", String, self.PressureCallback)
-        self.IMU_sub = rospy.Subscriber("IMU_data", Twist, self.IMUcallback)
+        self.IMU_sub = rospy.Subscriber("IMU_data", String, self.IMUcallback)
         #self.test = rospy.Subscriber()
         
         while not rospy.is_shutdown():
@@ -105,11 +105,7 @@ class ROVcomms():
             
             if XboxCont.A == 1:
                 print self.PTreadings
-<<<<<<< HEAD
-               # print 'A is pressed'
-=======
                 print 'A is pressed'
->>>>>>> 6cef6acaea2b2a34d477787c2363fa4041fb1709
 
             r.sleep()
         return
